@@ -1,0 +1,8 @@
+.idea
+*.json
+*.csv
+*.pkl
+*.ipynb
+tensorflow-triplet-loss
+*.ipynb_checkpoints
+tools
