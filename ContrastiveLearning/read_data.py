@@ -58,7 +58,7 @@ def read_train_data(name, sample_num=None):
         label_map = {'entailment':0, 'neutral': 1, 'contradiction': 2}
         # for Softmax Loss
         train_examples = list()
-        with open('../Data/ContrastiveLearning/Chinese_ONCLI_train.txt', 'r') as f:
+        with open('../Data/ContrastiveLearning/Chinese_OCNLI_train.txt', 'r') as f:
             for line in f.readlines():
                 line = line.replace('\n', '')
                 split_line = line.split('\t')
