@@ -16,8 +16,6 @@
 
 https://wiki.datastory.com.cn/pages/viewpage.action?pageId=79202220
 
-
-
 ## 实际实验方案
 
 ### 有监督联合训练（公开数据集双塔模型）
@@ -51,8 +49,6 @@ https://wiki.datastory.com.cn/pages/viewpage.action?pageId=79202220
          3. OPPO小布对话（离散label, 0,1） -  OnlineContrastiveLoss
    3. 训练策略：使用验证集的cosine similarity做early stopping
 
-
-
 ## 半监督训练
 
 1. 训练集：公司内部数据集（commonKB_food_product.pkl）
@@ -61,16 +57,33 @@ https://wiki.datastory.com.cn/pages/viewpage.action?pageId=79202220
 
 3. 模型结构：双塔模型
 
-4. 损失函数：BatchSemiHardTriplet
-
-
+4. 损失函数：BatchSemiHardTripletLoss
 
 ## 实验结果
 
 
 
+
+
 ## 注意
 
-训练代码中
+## 1. 使用Early Stopping
+
+- 当patience个evaluation后验证集指标值不再提高，则停止训练。
+
+- fit方法中的patience参数用于实现early stopping。使用early stopping需要根据ModifiedSentenceTransformer.py修改SentenceTransformer.py源码。否则不要添加此参数。
+
+```python
+model.fit(train_objectives=train_objectives,
+          evaluator=dev_evaluator,
+          epochs=num_epochs,
+          evaluation_steps=150,
+          warmup_steps=warmup_steps,
+          output_path=output_path,
+          show_progress_bar=True,
+          optimizer_params={'lr': 5e-5, 'eps': 1e-9, 'correct_bias': False},
+          callback=print_func,
+          patience=10) # param for early stopping
+```
 
 
