@@ -59,11 +59,10 @@ https://wiki.datastory.com.cn/pages/viewpage.action?pageId=79202220
 
 4. 损失函数：BatchSemiHardTripletLoss
 
-## 实验结果
+## 模型评价
 
 1. 模型方案
-
-
+2. 实验结果
 
 ## 注意
 
@@ -85,5 +84,3 @@ model.fit(train_objectives=train_objectives,
           callback=print_func,
           patience=10) # param for early stopping
 ```
-
-
