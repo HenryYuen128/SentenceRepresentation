@@ -43,7 +43,7 @@ https://wiki.datastory.com.cn/pages/viewpage.action?pageId=79202220
 3. 模型训练
    
    1. 模型结构：双塔模型
-   2. robin-round轮询式联合训练：
+   2. round-robin轮询式联合训练
       1. 每个step里，各数据集里取一个batch训练并更新模型参数
       2. 训练集与损失函数：
          1. OCNLI（三分类label: neutral, entailment, contradiction） -  SoftmaxLoss
